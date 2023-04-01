@@ -1,0 +1,951 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <title>Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Despoina Paschalidou">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="data/bunny.png"/>
+
+        <link rel="stylesheet" type="text/css" href="style_project_page.css?cache=7754391418498779889">
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/@glidejs/glide"></script>
+        <style type="text/css">
+            .side-text {
+                width:60%;
+                display:inline-block;
+                vertical-align:top;
+            }
+            .side-image {
+                width: 38%;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .controls {
+                margin-bottom: 10px;
+            }
+            .left-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 80%;
+            }
+            .right-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 19%;
+                text-align: right;
+            }
+            .render_window {
+                display: inline-block;
+                vertical-align: middle;
+                box-shadow: 1px 0px 5px black;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: calc(33% - 10px);
+            }
+            .progress {
+                background: #666;
+                position: relative;
+                height: 5px;
+                margin-bottom: -5px;
+                display: none;
+            }
+            .glide__slide:hover {cursor: grab;}
+            .glide__slide:active {cursor: grabbing;}
+            .glide__slide img {width: 90%;}
+            .glide__bullets {
+                text-align: center;
+            }
+            .glide__bullet--active {
+                color: #aaa; 
+            }
+
+            @media (max-width: 400px) {
+                .render_window {
+                    display: block;
+                    width: 90%;
+                    margin: 10px auto;
+                }
+            }
+            @media (max-width: 700px) {
+                .side-image {
+                    display: block;
+                    width: 80%;
+                    margin: 10px auto;
+                }
+                .side-text {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <img src="src\logo_image_final.jpg" style="width:40%;">
+            
+            <h1 class="project-title">
+                Human-Art: A Versatile Human-Centric Dataset<br />
+                Bridging Natural and Artificial Scenes
+            </h1>
+            
+            <div class="authors">
+                <a href=https://juxuan.space/#about-me//>
+                    Xuan Ju<sup>1,2</sup>
+                </a>
+                <a href=https://ailingzeng.site//>
+                    Ailing Zeng <sup>1</sup>
+                </a>
+                <a href=https://github.com/wendyjnwang//>
+                    Jianan Wang <sup>1</sup>
+                </a>
+                <a href=https://cure-lab.github.io//>
+                    Qiang Xu <sup>2</sup>
+                </a>
+                <a href=https://www.leizhang.org//>
+                    Lei Zhang <sup>1</sup>
+                </a>
+            </div>
+
+            <div class="affiliations">
+                <span><sup>1</sup> 
+                    <a href=https://idea.edu.cn/en//>
+                    International Digital Economy Academy
+                    </a>
+                </span>
+                <span><sup>2</sup> 
+                    <a href=https://www.cse.cuhk.edu.hk//>
+                    The Chinese University of Hong Kong
+                    </a>
+                </span>
+            </div>
+
+            <div class="project-conference">
+                CVPR 2023
+            </div>
+
+            <div class="project-icons">
+                <a href="https://arxiv.org/abs/2303.02760">
+                    <i class="fa fa-file"></i> <br/>
+                    Paper
+                </a>
+                <a href="https://github.com/IDEA-Research/HumanArt">
+                    <i class="fa fa-github"></i> <br/>
+                    Code
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScroT_jvw6B9U2Qca1_cl5Kmmu1ceKtlh6DJNmWLte8xNEhEw/viewform">
+                    <i class="fa fa-database"></i> <br/>
+                    Data
+                </a>
+                <!-- <a href="https://www.youtube.com/watch?v=6WK3B0IZJsw">
+                    <i class="fa fa-youtube-play"></i> <br/>
+                    Video
+                </a>
+                <a href="https://paschalidoud.github.io/data/Paschalidou2021CVPR_poster.pdf">
+                    <i class="fa fa-picture-o"></i> <br/>
+                    Poster
+                </a>
+                <a href="http://www.cvlibs.net/publications/Paschalidou2021CVPR_slides.pdf">
+                    <i class="fa fa-file-powerpoint-o"></i> <br/>
+                    Slides
+                </a>
+                <a href="https://autonomousvision.github.io/neural-parts/">
+                    <i class="fa fa-newspaper-o"></i> <br/>
+                    Blog
+                </a> -->
+            </div>
+
+            <div class="teaser-image">
+                <img src="src\dataset_overview.png" style="width:90%;">
+                <p class="caption"><strong>Human-Art</strong> is a versatile human-centric dataset to bridge the gap 
+                    between natural and artificial scenes. It includes twenty high-quality human scenes, 
+                    including natural and artificial humans in both 2D representation (yellow dashed boxes) 
+                    and 3D representation (blue solid boxes).</p>
+                <!-- <figure style="width: 49%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="projects/neural_parts/motivation_cvxnet.mp4" type="video/mp4"/>
+                    </video>
+                    <p class="caption">Existing primitive-based methods rely on
+                    simple shapes for decomposing complex 3D shapes into
+                    parts. As a result, they <strong>require a large number of primitives</strong>
+                    for extracting accurate reconstructions. However, this results in <strong>
+                    less interpretable shape abstractions</strong>, namely
+                    <strong>primitives are not semantically meaningful parts</strong>.</p>
+                </figure>
+                <figure style="width: 49%;">
+                    <video class="centered" width="100%" controls muted loop autoplay>
+                        <source src="projects/neural_parts/motivation_ours.mp4" type="video/mp4"/>
+                    </video>
+                    <p class="caption">Neural Parts is a novel 3D primitive representation that can 
+                    <strong>represent arbitrarily complex genus-zero shapes
+                    </strong> and thus yield more <strong>geometrically accurate</strong> and
+                    <strong>semantically meaningful</strong> shape abstractions compared to simpler primitives.</p>
+                </figure> -->
+            </div>
+
+            <div class="section-title">General Description</div>
+            <div class="content">
+                <p>This paper proposes a large-scale dataset, <strong>Human-Art</strong>, that targets multi-scenario human-centric tasks.</p>
+
+                <strong>Contents of Human-Art:</strong><br />
+
+                <ul>
+                    <li><u>50,000</u> images including human figures in <u>20 scenarios</u> (5 natural scenarios, 3 2D artificial scenarios, and 12 2D artificial scenarios)</li>
+                    <li>Human-centric annotations include <u>human bounding box, 21 2D human keypoints, human self-contact keypoints, and description text</u></li>
+                    <img src="src\annotation.png" style="width:50%;">
+                    <li><u>baseline</u> human detector and human pose estimator trained on the assembly of MSCOCO<sup>[1]</sup> and Human-Art</li>
+                </ul>
+
+                <strong>Tasks that Human-Art targets for:</strong><br />
+
+                <ul>
+                    <li>multi-scenario <u>human detection</u>, <u>2D human pose estimation</u>, and <u>3D human mesh recovery</u></li>
+                    <li>multi-scenario <u>human image generation</u> (especially <u>controllable</u> human image generation, e.g. with conditions such as pose and text)</li>
+                    <li><u>out-of-domain</u> human detection and human pose estimation</li>
+                </ul>
+
+                <strong>Characteristics of Human-Art:</strong><br />
+
+                <ul>
+                    <li><strong>Rich scenario:</strong> Human-Art focuses on scenes missing 
+                        in mainstream datasets (e.g., MSCOCO<sup>[1]</sup>), which covers most
+                        human-related scenarios. Challenging human appearances,
+                        diverse contexts, and various poses largely complement
+                        the scenario deficiency of existing datasets
+                        and will open up new challenges and opportunities.</li>
+                    <li><strong>High quality:</strong> We guarantee inter-category variability
+                        and intra-category diversity in style, author, origin,
+                        and age. The 50k images are manually selected from
+                        1,000k carefully collected images using standardized
+                        data collection, filtering, and consolidating processes.</li>
+                    <li><strong>Versatile annotations:</strong> Human-Art provides carefully
+                        manual annotations of 2D human keypoints, human
+                        bounding boxes, and self-contact points to support various
+                        downstream tasks. Also, we provide accessible
+                        text descriptions to enable multi-modality learning.</li>
+                </ul>
+            </div>
+
+            
+            <div class="section-title">Abstract</div>
+            <div class="content">
+                <p>Humans have long been recorded in a variety of forms 
+                since antiquity. For example, sculptures and paintings were
+                the primary media for depicting human beings before the 
+                invention of cameras. However, most current human-centric
+                computer vision tasks like human pose estimation and human 
+                image generation focus exclusively on natural images
+                in the real world. Artificial humans, such as those in sculptures, 
+                paintings, and cartoons, are commonly neglected,
+                making existing models fail in these scenarios. </p>
+                <p>As an abstraction of life, art incorporates humans in both
+                natural and artificial scenes. We take advantage of it and
+                introduce the Human-Art dataset to bridge related tasks in
+                natural and artificial scenarios. Specifically, Human-Art
+                contains 50k high-quality images with over 123k person
+                instances from 5 natural and 15 artificial scenarios, which
+                are annotated with bounding boxes, keypoints, self-contact
+                points, and text information for humans represented in both
+                2D and 3D. It is, therefore, comprehensive and versatile
+                for various downstream tasks. We also provide a rich set
+                of baseline results and detailed analyses for related tasks,
+                including human detection, 2D and 3D human pose estimation, 
+                image generation, and motion transfer. As a challenging 
+                dataset, we hope Human-Art can provide insights for
+                relevant research and open up new research questions.</p>
+
+            </div>
+
+
+            <div class="section-title">Contrast with Previous Datasets</div>
+            <div class="content">
+                <img src="src\dataset_contrast.png" style="width:70%;">
+                <p class="caption">Comparison of human-centric recognition datasets, including human detection and pose estimation tasks.</p>
+            </div>
+
+            <div class="section-title">Data Collection & Annotation Process</div>
+            <div class="content">
+                <img src="src\collection.png" style="width:50%;">
+                <p class="caption">Data collection and annotation processes. The entire labeling process ensures an accuracy of at least 98%. </p>
+            </div>
+
+            <div class="section-title">Downstream Tasks - 1 Human Detection</div>
+            <div class="content">
+                <p>
+                Human detection task identifies the bounding box
+                of each person in a given image, which is fundamental for
+                further human scene understanding.
+                </p>
+                <img src="src\human_detection.png" style="width:60%;">
+                <p class="caption">Performance of widely-used detectors on the validation and test sets of Human-Art. All the pre-trained models have
+                    poor performance on artificial scenes, with average precision
+                    (AP) ranging from 11.7% to 14.7%, confirming the
+                    impact of the domain gap on the models' generalization
+                    ability. The joint training procedure leads to about a
+                    56% performance boost in Shadow Play and a 31% average
+                    improvement in all categories.
+                </p>
+            </div>
+
+            <div class="section-title">Downstream Tasks - 2 Human Pose Estimation</div>
+            <div class="content">
+
+                <p>
+                Human Pose Estimation (HPE) is another basic task for human
+                motion analysis, which can be divided into 2D HPE
+                and 3D HPE, outputting 2D keypoints and 3D keypoints
+                respectively.
+                </p>
+
+                <p><strong>2D Human Pose Estimation</strong></p>
+                
+                <img src="src\human_pose_estimation.png" style="width:70%;">
+                
+                <p class="caption">Performance of widely used as well as the SOTA 2D human pose estimation methods on the
+                    validation and testing sets of Human-Art. We provide results of top-down pose estimator (HRNet<sup>[2]</sup>, ViTPose<sup>[3]</sup>),
+                    bottom-up pose estimator (HigherHRNet<sup>[4]</sup>), one-stage pose estimator (ED-Pose<sup>[5]</sup>). Moreover, we provide a baseline model by training HRNet<sup>[2]</sup>
+                    on the assembly of MSCOCO<sup>[1]</sup> and Human-Art, resulting in an overall 21% boost in accuracy.
+                </p>
+
+                <p><strong> Human Mesh Recovery </strong></p>
+                
+                <p>
+                Depth ambiguities hinder the fidelity of 3D human mesh estimation from a monocular camera. The self-contact annotations we provide can facilitate
+                reasonable depth optimization via the interpenetration penalty, thus benefit 3D mesh recovery.
+                </p>
+
+                <img src="src\3d_mesh_recovery.png" style="width:90%;">
+                
+                <p class="caption">Illustration of how the annotated self-contact points can benefit 3D human mesh recovery. (a), (c), and (e) show the human mesh
+                    outputs from three scenes without self-contact optimization. (b), (d), and (f) are optimized mesh results with self-contact points.
+                    By mapping the contact region onto the vertices of
+                    a rough SMPL<sup>[6]</sup> model generated by Exemplar Fine-Tuning
+                    (EFT)<sup>[7]</sup> and then minimizing the distance among the
+                    contact vertices, 
+                    annotating self-contact keypoints can largely benefit 3D mesh recovery.
+                </p>
+            </div>
+
+            <div class="section-title">Downstream Tasks - 3 Image Generation</div>
+            <div class="content">
+                <p>Image generation has experienced great advances in the
+                past few years with eye-catching generative vision and language
+                models such as unCLIP<sup>[8]</sup>, Latent Diffusion<sup>[9]</sup> and Imagen<sup>[10]</sup>. Text2Image takes text as 
+                conditional information and generate human images based on text description.
+                By offering fine-annotated artificial scenarios with
+                Human-Art, we not only introduce a valuable supplement to
+                existing datasets. More importantly, it provides a good prior
+                for generating art images with plausible human poses.
+                Moreover, Human-Art can be helpful in pose & text conditional image generation (Pose&Text2Image).
+                </p>
+
+                <p><strong> Text2Image </strong></p>
+
+                <img src="src\humanart_generation.png" style="width:60%;">
+                <p class="caption">Example generations with five scenes from a diffusion
+                    generative model trained on Human-Art. Notably, Shadow Play is
+                    a novel scene for existing generative models.
+                </p>
+
+                <p><strong> Pose&Text2Image </strong></p>
+
+                <img src="src\humansd.png" style="width:100%;">
+                <p class="caption">Multi-scenario human-centric image generation with precise pose control. Each group of
+                    displayed images includes: (a) a generation by the pre-trained pose-less text-guided stable diffusion (SD)<sup>[9]</sup>, (b) pose
+                    skeleton images as the condition, (c) a generation by ControlNet<sup>[11]</sup>, and (d)
+                    a generation by model trained on assembly of Human-Art and other datasets (this work is not ready for demonstration, we will make it public as soon as possible). (d) shows its
+                    superiorities in terms of (I) challenging poses, (II) accurate painting styles, (III) pose control capability, (IV) multi-person
+                    scenarios, and (V) delicate details
+                </p>
+            </div>
+
+            <div class="section-title">Reference</div>
+            <div class="content">
+                <p>
+                [1] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays,
+                Pietro Perona, Deva Ramanan, Piotr Dollár, and C Lawrence
+                Zitnick. Microsoft COCO: Common objects in context. In
+                European Conference on Computer Vision (ECCV), pages
+                740–755. Springer, 2014. 1, 2, 3, 4, 5, 6 <br />
+                [2] Ke Sun, Bin Xiao, Dong Liu, and Jingdong Wang. Deep
+                high-resolution representation learning for human pose estimation.
+                In Proceedings of the IEEE/CVF Conference on
+                Computer Vision and Pattern Recognition (CVPR), pages
+                5693–5703, 2019. 6 <br />
+                [3] Yufei Xu, Jing Zhang, Qiming Zhang, and Dacheng Tao.
+                ViTPose: Simple vision transformer baselines for human
+                pose estimation. In Alice H. Oh, Alekh Agarwal, Danielle
+                Belgrave, and Kyunghyun Cho, editors, Advances in Neural
+                Information Processing Systems (NIPS), 2022. 1, 2, 5, 6 <br />
+                [4] Bowen Cheng, Bin Xiao, Jingdong Wang, Honghui Shi,
+                Thomas S Huang, and Lei Zhang. HigherHRNet: Scaleaware
+                representation learning for bottom-up human pose estimation.
+                In Proceedings of the IEEE/CVF Conference on
+                Computer Vision and Pattern Recognition (CVPR), pages
+                5386–5395, 2020. 6 <br />
+                [5] Jie Yang, Ailing Zeng, Shilong Liu, Feng Li, Ruimao Zhang,
+                and Lei Zhang. Explicit box detection unifies end-to-end
+                multi-person pose estimation. In International Conference
+                on Learning Representations, 2023. 6 <br />
+                [6] Matthew Loper, Naureen Mahmood, Javier Romero, Gerard
+                Pons-Moll, and Michael J. Black. SMPL: A skinned multiperson
+                linear model. ACM transactions on graphics (TOG),
+                34(6):248:1–248:16, Oct. 2015. 7 <br />
+                [7] Hanbyul Joo, Natalia Neverova, and Andrea Vedaldi. Exemplar
+                fine-tuning for 3d human model fitting towards in-thewild
+                3d human pose estimation. In International Conference
+                on 3D Vision (3DV), pages 42–52. IEEE, 2021. 7 <br />
+                [8] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu,
+                and Mark Chen. Hierarchical text-conditional image generation
+                with clip latents. arXiv preprint arXiv:2204.06125,
+                2022. 7 <br />
+                [9] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+                Patrick Esser, and Björn Ommer. High-resolution image
+                synthesis with latent diffusion models. In Proceedings of
+                the IEEE/CVF Conference on Computer Vision and Pattern
+                Recognition (CVPR), pages 10684–10695, 2022. 4, 7 <br />
+                [10] Chitwan Saharia, William Chan, Saurabh Saxena, Lala
+                Li, Jay Whang, Emily Denton, Seyed Kamyar Seyed
+                Ghasemipour, Burcu Karagol Ayan, S Sara Mahdavi,
+                Rapha Gontijo Lopes, et al. Photorealistic text-to-image
+                diffusion models with deep language understanding. arXiv
+                preprint arXiv:2205.11487, 2022. 7 <br />
+                [11] Lvmin Zhang and Maneesh Agrawala. Adding conditional
+                control to text-to-image diffusion models. arXiv preprint
+                arXiv:2302.05543, 2023. 1, 2, 3, 4, 5, 6, 7 <br />
+                </p>
+            </div>
+
+            <div class="section-title">BibTeX</div>
+            <div class="content">
+            <pre  align="left">
+@inproceedings{ju2023humanart,
+title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
+author={Ju, Xuan and Zeng, Ailing and Jianan, Wang and Qiang, Xu and Lei, Zhang},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+year={2023}}</pre>
+            </div>
+
+            <!-- <div class="section-title">Approach Overview</div>
+
+            <div class="video">
+            <iframe width="860" height="485" src="https://www.youtube.com/embed/6WK3B0IZJsw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="content">
+                <div class="side-text"><p>Primitive-based representations seek to infer
+                <strong>semantically consistent part arrangements across
+                different object instances</strong>. Existing primitive-based
+                methods rely on simple shapes for decomposing complex objects
+                into parts such as cuboids, superquadrics, spheres or
+                convexes. <strong>Due to their simple parametrization, these primitives
+                have limited expressivity and cannot capture arbitrarily
+                complex geometries</strong>. Therefore, <strong>existing part-based methods
+                require a large number of primitives for extracting
+                geometrically accurate reconstructions</strong>. However, using <strong>more
+                primitives comes at the expense of less interpretable
+                reconstructions</strong>. Namely, a primitive is not an identifiable
+                part anymore.</p></div>
+                <div class="side-image"><img src="projects/neural_parts/convexes_vs_nps.png" style="width:100%;"></div>
+                <p>We introduce a novel 3D primitive representation that is
+                defined as <strong>a deformation between shapes</strong> and is
+                <strong>parametrized as a learned homeomorphic mapping</strong>
+                implemented with an <strong>Invertible Neural Network
+                (INN)</strong>. We argue that a primitive should be a non
+                trivial genus-zero shape with well defined implicit and explicit representations. Using an INN allows us to efficiently compute
+                the implicit and explicit representation of the predicted shape
+                and impose various constraints on the predicted parts. In contrast to prior work,
+                that directly predict the primitive parameters (i.e. centroids and sizes for cuboids
+                and superquadrics and hyperplanes for convexes), we employ the INN to fully define each primitive.
+                This allows us to have primitives that capture arbitrarily
+                complex geometries, hence the ability of our model to parse
+                objects into expressive shape abstractions that are more
+                geometrically accurate using an order of magnitude fewer
+                primitives compared to approaches that rely on simple convex
+                shape primitives.
+                </p>
+                <img src="projects/neural_parts/architecture.png" style="width:100%;">
+                <p class="caption">Given an input image and a watertight mesh
+                of the target object we seek to learn a representation with M
+                primitives that best describes the target object. We define our
+                primitives via a deformation between shapes that is
+                parametrized as a learned homeomorphism implemented with an
+                Invertible Neural Network (INN). For each primitive, we seek to
+                learn a homeomorphism between the 3D space of a simple
+                genus-zero shape and the 3D space of the target object, such
+                that the deformed shape matches a part of the target object. Due
+                to its simple implicit surface definition and tesselation, we
+                employ a sphere as our genus-zero shape. Note that using an INN
+                allows us to efficiently compute the implicit and explicit representation of
+                the predicted shape and impose various constraints on the predicted parts.</p>
+            </div> -->
+
+            <!-- <div class="section-title">Results</div>
+            <div class="content">
+                In the following interactive visualization, the naming of the
+                parts has been done manually. However, <strong>the model had no part
+                supervision during training</strong>. The semantic parts have
+                emerged naturally from reconstructing the geometry.
+
+                <h3>Humans</h3>
+                <div id="humans">
+                    <div class="controls">
+                        <div class="left-controls">
+                            Show
+                            <input type="checkbox" id="humans_all" checked><label for="humans_all">all parts</label>
+                            <input type="checkbox" id="humans_head"><label for="humans_head">heads</label>
+                            <input type="checkbox" id="humans_body"><label for="humans_body">bodies</label>
+                            <input type="checkbox" id="humans_left_hand"><label for="humans_left_hand">left-arms</label>
+                            <input type="checkbox" id="humans_right_hand"><label for="humans_right_hand">right-arms</label>
+                            <input type="checkbox" id="humans_left_leg"><label for="humans_left_leg">left-legs</label>
+                            <input type="checkbox" id="humans_right_leg"><label for="humans_right_leg">right-legs</label>
+                        </div>
+                        <div class="right-controls">
+                            <button>Randomize</button>
+                        </div>
+                    </div>
+                    <div class="render_container">
+                        <div data-size="400" class="render_window"></div><div data-size="400" class="render_window"></div><div data-size="400" class="render_window"></div>
+                    </div>
+                </div>
+
+                <h3>Planes</h3>
+                <div id="planes">
+                    <div class="controls">
+                        <div class="left-controls">
+                            Show
+                            <input type="checkbox" id="planes_all" checked><label for="planes_all">all parts</label>
+                            <input type="checkbox" id="planes_nose"><label for="planes_nose">noses</label>
+                            <input type="checkbox" id="planes_body"><label for="planes_body">bodies</label>
+                            <input type="checkbox" id="planes_left_wing"><label for="planes_left_wing">left-wings</label>
+                            <input type="checkbox" id="planes_right_wing"><label for="planes_right_wing">right-wings</label>
+                            <input type="checkbox" id="planes_tail"><label for="planes_tail">tails</label>
+                        </div>
+                        <div class="right-controls">
+                            <button>Randomize</button>
+                        </div>
+                    </div>
+                    <div class="render_container">
+                        <div data-size="400" class="render_window"></div><div data-size="400" class="render_window"></div><div data-size="400" class="render_window"></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="section-title">Comparison to Primitive-based Methods</div>
+            <div class="content">
+                <p>
+                    We compare the representation power of Neural Parts to
+                    other primitive-based methods by evaluating the
+                    reconstruction quality with varying number of primitives on
+                    three datasets. We observe that our model is <strong>more
+                    geometrically accurate, more semantically consistent and
+                    yields more meaningful parts</strong> (i.e. primitives are
+                    identifiable parts such as thumbs, legs, wings, tires,
+                    etc.) compared to simpler primitives.
+                </p>
+                <div class="glide">
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0">Humans</button>
+                        <button class="glide__bullet" data-glide-dir="=1">Hands</button>
+                        <button class="glide__bullet" data-glide-dir="=2">Chairs</button>
+                        <button class="glide__bullet" data-glide-dir="=3">Planes</button>
+                        <button class="glide__bullet" data-glide-dir="=4">Cars</button>
+                        <button class="glide__bullet" data-glide-dir="=5">Lamps</button>
+                    </div>
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/humans.png"></li>
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/hands.png"></li>
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/chairs.png"></li>
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/planes.png"></li>
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/cars.png"></li>
+                            <li class="glide__slide"><img src="projects/neural_parts/comparison/lamps.png"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="section-title">Semantic Consistency</div>
+            <div class="content">
+                We observe that Neural Parts consistently use the same
+                primitive for representing the same object part regardless of
+                the breadth of the part's motion. Notably, this
+                <strong>temporal consistency is an emergent property</strong>
+                of our method and <strong>not one that is enforced with any
+                kind of loss</strong>.
+                <video class="centered" width="100%" controls muted loop autoplay>
+                    <source
+                        src="projects/neural_parts/semantic-consistency-shorter.mp4"
+                        type="video/mp4" />
+                </video>
+            </div>
+
+            <div class="section-title">Acknowledgements</div>
+            <div class="content">
+                This research was supported by the Max Planck ETH Center for
+                Learning Systems.
+            </div>
+        </div> -->
+
+        <script type="module">
+            import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
+            import {OrbitControls} from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js";
+            import {OBJLoader} from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/OBJLoader.js";
+
+            // Render the predictions
+            function random_choice(arr, n) {
+                var index_set = {};
+                var choice = [];
+                while (choice.length < n) {
+                    var idx = Math.floor(Math.random() * arr.length);
+                    if (index_set[idx] !== undefined) {
+                        continue;
+                    }
+                    index_set[idx] = 0;
+                    choice.push(idx);
+                }
+
+                return choice.map(x => arr[x]);
+            }
+
+            function progress_bar() {
+                var el = document.createElement("div");
+                el.classList.add("progress");
+
+                return {
+                    domElement: el,
+                    update: function (percent) {
+                        percent = Math.min(1, Math.max(0, percent));
+                        el.style.display = "block";
+                        el.style.width = Math.round(percent * 100) + "%";
+                    },
+                    hide: function () {
+                        el.style.display = "none";
+                    }
+                };
+            }
+
+            function reset_checkboxes(checkboxes) {
+                Array.prototype.forEach.call(checkboxes, function (c) {
+                    c.checked = false;
+                });
+                checkboxes[0].checked = true;
+            }
+
+            function show_object(el, prefix, N) {
+                const scene = new THREE.Scene();
+                const renderer = new THREE.WebGLRenderer();
+                const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+                const controls = new OrbitControls(camera, renderer.domElement);
+
+                camera.position.set(0.5, 0.5, 0.5);
+                controls.target.set(0, 0, 0);
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = 4;
+                scene.background = new THREE.Color("white");
+                var size = el.dataset.size;
+                renderer.setSize(size, size);
+                var progress = progress_bar();
+                el.appendChild(progress.domElement);
+                el.appendChild(renderer.domElement);
+
+                const amb_light = new THREE.AmbientLight(0x606060); // soft white light
+                scene.add(amb_light);
+                const hem_light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+                scene.add(hem_light);
+
+                const colors = [
+                    0x1f77b4,
+                    0xaec7e8,
+                    0xff7f0e,
+                    0xffbb78,
+                    0x2ca02c,
+                    0x98df8a,
+                    0xd62728,
+                    0xff9896,
+                    0x9467bd,
+                    0xc5b0d5,
+                    0x8c564b,
+                    0xc49c94,
+                    0xe377c2,
+                    0xf7b6d2,
+                    0x7f7f7f,
+                    0xc7c7c7,
+                    0xbcbd22,
+                    0xdbdb8d,
+                    0x17becf,
+                    0x9edae5
+                ];
+                var previous_canvas_size = size;
+                function animate() {
+                    requestAnimationFrame(animate);
+                    if (el.offsetWidth != previous_canvas_size) {
+                        previous_canvas_size = el.offsetWidth;
+                        renderer.domElement.style.width = previous_canvas_size + "px";
+                        renderer.domElement.style.height = previous_canvas_size + "px";
+                    }
+
+                    controls.update();
+                    renderer.render(scene, camera);
+                }
+
+                const loader = new OBJLoader();
+                var meshes = [];
+                var progresses = [];
+                var loaded = 0;
+                function load_part(part_idx) {
+                    progresses[part_idx] = 0;
+                    loader.load(
+                        prefix + "/part_00" + i + ".obj",
+                        function (object) {
+                            var g = object.children[0].geometry;
+                            var m = new THREE.MeshLambertMaterial({color: colors[part_idx]});
+                            m.transparent = true;
+                            var mesh = new THREE.Mesh(g, m);
+                            meshes[part_idx] = mesh;
+                            scene.add(mesh);
+
+                            loaded++;
+                            if (loaded == N) {
+                                progress.hide();
+                            }
+                        },
+                        function (event) {
+                            progresses[part_idx] = event.loaded / event.total;
+                            var total_progress = 0;
+                            for (var i=0; i<progresses.length; i++) {
+                                total_progress += progresses[i] / progresses.length;
+                            }
+                            progress.update(total_progress);
+                        }
+                    )
+                }
+                for (var i=0; i<N; i++) {
+                    load_part(i);
+                }
+                animate();
+
+                return {
+                    meshes: meshes,
+                    show: function (indices) {
+                        for (var i=0; i<N; i++) {
+                            meshes[i].material.opacity = 0.5;
+                            //meshes[i].visible = false;
+                        }
+                        for (var i=0; i<indices.length; i++) {
+                            meshes[indices[i]].material.opacity = 1;
+                            //meshes[indices[i]].visible = true;
+                        }
+                    },
+                    show_all: function () {
+                        for (var i=0; i<N; i++) {
+                            meshes[i].material.opacity = 1;
+                            //meshes[i].visible = true;
+                        }
+                    },
+                    set_size: function(width, height) {
+                        renderer.setSize(width, height);
+                    }
+                };
+            }
+
+            function show_group(elements, objects, N) {
+                var controls = [];
+                for (var i=0; i<objects.length; i++) {
+                    controls.push(show_object(elements[i], objects[i], N));
+                }
+
+                return {
+                    controls: controls,
+                    show: function (indices) {
+                        for (var i=0; i<controls.length; i++) {
+                            controls[i].show(indices);
+                        }
+                    },
+                    show_all: function () {
+                        for (var i=0; i<controls.length; i++) {
+                            controls[i].show_all();
+                        }
+                    }
+                };
+            }
+
+            // Humans
+            var humans = [
+                "https://superquadrics.com/neural_parts/humans/50002_chicken_wings",
+                "https://superquadrics.com/neural_parts/humans/50002_hips",
+                "https://superquadrics.com/neural_parts/humans/50002_jiggle_on_toes",
+                "https://superquadrics.com/neural_parts/humans/50002_jumping_jacks",
+                "https://superquadrics.com/neural_parts/humans/50002_jumping_jacks_00038",
+                "https://superquadrics.com/neural_parts/humans/50002_jumping_jacks_2",
+                "https://superquadrics.com/neural_parts/humans/50002_knees",
+                "https://superquadrics.com/neural_parts/humans/50004_punching",
+                "https://superquadrics.com/neural_parts/humans/50004_running_on_spot",
+                "https://superquadrics.com/neural_parts/humans/50004_running_on_spot_00220",
+                "https://superquadrics.com/neural_parts/humans/50004_running_on_spot_2",
+                "https://superquadrics.com/neural_parts/humans/50004_running_spot",
+                "https://superquadrics.com/neural_parts/humans/50007_jumping_jacks",
+                "https://superquadrics.com/neural_parts/humans/50009_chicken_wings",
+                "https://superquadrics.com/neural_parts/humans/50009_jumping_jacks",
+                "https://superquadrics.com/neural_parts/humans/50009_jumping_jacks_00140",
+                "https://superquadrics.com/neural_parts/humans/50009_one_leg_jump",
+                "https://superquadrics.com/neural_parts/humans/50009_one_leg_jump_00075",
+                "https://superquadrics.com/neural_parts/humans/50009_shake_hips",
+                "https://superquadrics.com/neural_parts/humans/50020_knees_00136",
+                "https://superquadrics.com/neural_parts/humans/50021_knees",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_2",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_3",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_4",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_5",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_6",
+                "https://superquadrics.com/neural_parts/humans/50021_knees_7",
+                "https://superquadrics.com/neural_parts/humans/50021_one_leg_jump",
+                "https://superquadrics.com/neural_parts/humans/50021_running_on_spot",
+                "https://superquadrics.com/neural_parts/humans/50021_running_on_spot_2",
+                "https://superquadrics.com/neural_parts/humans/50022_punching_00069",
+                "https://superquadrics.com/neural_parts/humans/50022_shake_hips",
+                "https://superquadrics.com/neural_parts/humans/50026_knees",
+                "https://superquadrics.com/neural_parts/humans/50027_jumping_jacks",
+                "https://superquadrics.com/neural_parts/humans/50027_jumping_jacks_2",
+                "https://superquadrics.com/neural_parts/humans/50027_jumping_jacks_3",
+                "https://superquadrics.com/neural_parts/humans/50027_jumping_jacks_4",
+                "https://superquadrics.com/neural_parts/humans/50027_jumping_jacks_5",
+            ];
+            var human_control = show_group(
+                document.getElementById("humans").getElementsByClassName("render_window"),
+                [humans[0], humans[1], humans[2]],
+                6
+            );
+            var human_checkboxes = document.querySelectorAll("#humans .controls input");
+            reset_checkboxes(human_checkboxes);
+            document.querySelector("#humans .controls").addEventListener(
+                "change",
+                function (ev) {
+                    if (ev.target.id == "humans_all") {
+                        Array.prototype.filter.call(
+                            human_checkboxes,
+                            (el) => el.id != "humans_all"
+                        ).forEach(function (el) {el.checked = false;});
+                    } else if (ev.target.checked) {
+                        human_checkboxes[0].checked = false;
+                    }
+
+                    var ids = new Set();
+                    if (human_checkboxes[0].checked) {
+                        ids = new Set([0, 1, 2, 3, 4, 5]);
+                    }
+                    var part_ids = [1, 2, 0, 4, 3, 5];
+                    for (var i=1; i<human_checkboxes.length; i++) {
+                        if (human_checkboxes[i].checked) {
+                            ids.add(part_ids[i-1]);
+                        }
+                    }
+
+                    human_control.show(Array.from(ids));
+                }
+            );
+            document.querySelector("#humans .controls button").addEventListener(
+                "click",
+                function (ev) {
+                    reset_checkboxes(human_checkboxes);
+                    var new_humans = random_choice(humans, 3);
+                    var render_windows = document.getElementById("humans").getElementsByClassName("render_window");
+                    Array.prototype.forEach.call(render_windows, function (r) {r.innerHTML = "";});
+                    human_control = show_group(
+                        render_windows,
+                        new_humans,
+                        6
+                    );
+                }
+            );
+
+            // Planes
+            var planes = [
+                "https://superquadrics.com/neural_parts/planes/10af5de930178a161596c26b5af806fe",
+                "https://superquadrics.com/neural_parts/planes/1a32f10b20170883663e90eaf6b4ca52",
+                "https://superquadrics.com/neural_parts/planes/1a6ad7a24bb89733f412783097373bdc",
+                "https://superquadrics.com/neural_parts/planes/1b3c6b2fbcf834cf62b600da24e0965",
+                "https://superquadrics.com/neural_parts/planes/1c26ecb4cd01759dc1006ed55bc1a3fc",
+                "https://superquadrics.com/neural_parts/planes/284e6431669d46fd44797ce00623b3fd",
+                "https://superquadrics.com/neural_parts/planes/2c3ba3f35c5d2b0ce77e43d0a92bdc06",
+                "https://superquadrics.com/neural_parts/planes/315f523d0a924fb7ef70df8610b582b2",
+                "https://superquadrics.com/neural_parts/planes/343a607d1604335fb4f192eea1889928",
+                "https://superquadrics.com/neural_parts/planes/347d86d7001cef01232236eecec447b",
+                "https://superquadrics.com/neural_parts/planes/351c9235749e398162147e00e97e28b5",
+                "https://superquadrics.com/neural_parts/planes/3716ed4fa80dbf5f41392ab7a601818b",
+                "https://superquadrics.com/neural_parts/planes/384e72f69e6f24404cb288947cda4a2c",
+                "https://superquadrics.com/neural_parts/planes/440ac1b4ac3cbe114c3a35cee92bb95b",
+                "https://superquadrics.com/neural_parts/planes/440e5ba74ac8124e9751c7a6f15617f4",
+                "https://superquadrics.com/neural_parts/planes/48706d323b9041d5438a95791ca4064d",
+                "https://superquadrics.com/neural_parts/planes/563cef4df464ddb1e153dd90dac45a6d",
+                "https://superquadrics.com/neural_parts/planes/5c6590461085c93ea91e80f26309099e",
+                "https://superquadrics.com/neural_parts/planes/60b5f5da40e0dd33579f6385fdd4245b",
+                "https://superquadrics.com/neural_parts/planes/7b134f6573e7270fb0a79e28606cb167",
+                "https://superquadrics.com/neural_parts/planes/92a83ecaa10e8d3f78e919a72d9a39e7",
+                "https://superquadrics.com/neural_parts/planes/ed2aaca045fb1714cd4229f38ad0d015",
+                "https://superquadrics.com/neural_parts/planes/f12eefbbefabe566ca8607f540cc62ba",
+            ];
+            var plane_control = show_group(
+                document.getElementById("planes").getElementsByClassName("render_window"),
+                [planes[7], planes[1], planes[2]],
+                5
+            );
+            var plane_checkboxes = document.querySelectorAll("#planes .controls input");
+            reset_checkboxes(plane_checkboxes);
+            document.querySelector("#planes .controls").addEventListener(
+                "change",
+                function (ev) {
+                    if (ev.target.id == "planes_all") {
+                        Array.prototype.filter.call(
+                            plane_checkboxes,
+                            (el) => el.id != "planes_all"
+                        ).forEach(function (el) {el.checked = false;});
+                    } else if (ev.target.checked) {
+                        plane_checkboxes[0].checked = false;
+                    }
+
+                    var ids = new Set();
+                    if (plane_checkboxes[0].checked) {
+                        ids = new Set([0, 1, 2, 3, 4]);
+                    }
+                    var part_ids = [4, 0, 3, 2, 1];
+                    for (var i=1; i<plane_checkboxes.length; i++) {
+                        if (plane_checkboxes[i].checked) {
+                            ids.add(part_ids[i-1]);
+                        }
+                    }
+
+                    plane_control.show(Array.from(ids));
+                }
+            );
+            document.querySelector("#planes .controls button").addEventListener(
+                "click",
+                function (ev) {
+                    reset_checkboxes(plane_checkboxes);
+                    var new_planes = random_choice(planes, 3);
+                    var render_windows = document.getElementById("planes").getElementsByClassName("render_window");
+                    Array.prototype.forEach.call(render_windows, function (r) {r.innerHTML = "";});
+                    plane_control = show_group(
+                        render_windows,
+                        new_planes,
+                        5
+                    );
+                }
+            );
+        </script>
+        <script>
+            // Make the carousel for the comparisons
+            var glide = new Glide(".glide", {
+                type: "carousel",
+                startAt: 0,
+                perView: 1,
+                autoplay: 2000
+            }).mount();
+        </script>
+    </body>
+</html>
