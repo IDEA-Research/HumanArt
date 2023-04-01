@@ -189,36 +189,6 @@
                 </figure> -->
             </div>
 
-            <div class="section-title">General Description</div>
-            <div class="content">
-                <p>This paper proposes a large-scale dataset, <strong>Human-Art</strong>, that targets multi-scenario human-centric tasks.</p>
-
-                <strong>Contents of Human-Art:</strong><br />
-
-                <ul>
-                    <li><u>50,000</u> images including human figures in <u>20 scenarios</u> (5 natural scenarios, 3 2D artificial scenarios, and 12 2D artificial scenarios)</li>
-                    <li>Human-centric annotations include <u>human bounding box, 21 2D human keypoints, human self-contact keypoints, and description text</u></li>
-                    <img src="src\annotation.png" style="width:50%;">
-                    <li><u>baseline</u> human detector and human pose estimator trained on the assembly of MSCOCO<sup>[1]</sup> and Human-Art</li>
-                </ul>
-
-                <strong>Tasks that Human-Art targets for:</strong><br />
-
-                <ul>
-                    <li>multi-scenario <u>human detection</u>, <u>2D human pose estimation</u>, and <u>3D human mesh recovery</u></li>
-                    <li>multi-scenario <u>human image generation</u> (especially <u>controllable</u> human image generation, e.g. with conditions such as pose and text)</li>
-                    <li><u>out-of-domain</u> human detection and human pose estimation</li>
-                </ul>
-
-                <strong>Characteristics of Human-Art:</strong><br />
-
-                <ul>
-                    <li>Rich scenario</li>
-                    <li>High quality</li>
-                    <li>Versatile annotations</li>
-                </ul>
-            </div>
-
             
             <div class="section-title">Abstract</div>
             <div class="content">
@@ -247,6 +217,37 @@
                 dataset, we hope Human-Art can provide insights for
                 relevant research and open up new research questions.</p>
 
+            </div>
+
+
+            <div class="section-title">General Description</div>
+            <div class="content">
+                <p>This paper proposes a large-scale dataset, <strong>Human-Art</strong>, that targets multi-scenario human-centric tasks.</p>
+
+                <strong>Contents of Human-Art:</strong><br />
+
+                <ul>
+                    <li><u>50,000</u> images including more than <u>123,000</u> human figures in <u>20 scenarios</u> (5 natural scenarios, 3 2D artificial scenarios, and 12 2D artificial scenarios)</li>
+                    <li>Human-centric annotations include <u>human bounding box, 21 2D human keypoints, human self-contact keypoints, and description text</u></li>
+                    <img src="src\annotation.png" style="width:50%;">
+                    <li><u>baseline</u> human detector and human pose estimator trained on the assembly of MSCOCO<sup>[1]</sup> and Human-Art</li>
+                </ul>
+
+                <strong>Tasks that Human-Art targets for:</strong><br />
+
+                <ul>
+                    <li>multi-scenario <u>human detection</u>, <u>2D human pose estimation</u>, and <u>3D human mesh recovery</u></li>
+                    <li>multi-scenario <u>human image generation</u> (especially <u>controllable</u> human image generation, e.g. with conditions such as pose and text)</li>
+                    <li><u>out-of-domain</u> human detection and human pose estimation</li>
+                </ul>
+
+                <strong>Characteristics of Human-Art:</strong><br />
+
+                <ul>
+                    <li>Rich scenario</li>
+                    <li>High quality</li>
+                    <li>Versatile annotations</li>
+                </ul>
             </div>
 
 
@@ -321,18 +322,12 @@
 
             <div class="section-title">Downstream Tasks - 3 Image Generation</div>
             <div class="content">
-                <p>Image generation has experienced great advances in the
-                past few years with eye-catching generative vision and language
-                models such as unCLIP<sup>[8]</sup>, Latent Diffusion<sup>[9]</sup> and Imagen<sup>[10]</sup>. Text2Image takes text as 
-                conditional information and generate human images based on text description.
-                By offering fine-annotated artificial scenarios with
-                Human-Art, we not only introduce a valuable supplement to
-                existing datasets. More importantly, it provides a good prior
-                for generating art images with plausible human poses.
-                Moreover, Human-Art can be helpful in pose & text conditional image generation (Pose&Text2Image).
-                </p>
 
                 <p><strong> Text2Image </strong></p>
+                
+                <p>
+                    Text2Image takes text as conditional information and generate human images based on text description.
+                </p>
 
                 <img src="src\humanart_generation.png" style="width:60%;">
                 <p class="caption">Example generations with five scenes from a diffusion
@@ -341,15 +336,29 @@
                 </p>
 
                 <p><strong> Pose&Text2Image </strong></p>
+                
+                <p>
+                    Moreover, Human-Art can be helpful in pose & text conditional image generation (Pose&Text2Image).
+                </p>
 
                 <img src="src\humansd.png" style="width:100%;">
                 <p class="caption">Multi-scenario human-centric image generation with precise pose control. Each group of
-                    displayed images includes: (a) a generation by the pre-trained pose-less text-guided stable diffusion (SD)<sup>[9]</sup>, (b) pose
-                    skeleton images as the condition, (c) a generation by ControlNet<sup>[11]</sup>, and (d)
+                    displayed images includes: (a) a generation by the pre-trained pose-less text-guided stable diffusion (SD)<sup>[8]</sup>, (b) pose
+                    skeleton images as the condition, (c) a generation by ControlNet<sup>[9]</sup>, and (d)
                     a generation by model trained on assembly of Human-Art and other datasets (this work is not ready for demonstration, we will make it public as soon as possible). (d) shows its
                     superiorities in terms of (I) challenging poses, (II) accurate painting styles, (III) pose control capability, (IV) multi-person
                     scenarios, and (V) delicate details
                 </p>
+            </div>
+
+            <div class="section-title">BibTeX</div>
+            <div class="content">
+            <pre  align="left">
+@inproceedings{ju2023humanart,
+title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
+author={Ju, Xuan and Zeng, Ailing and Jianan, Wang and Qiang, Xu and Lei, Zhang},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+year={2023}}</pre>
             </div>
 
             <div class="section-title">Reference</div>
@@ -388,36 +397,18 @@
                 fine-tuning for 3d human model fitting towards in-thewild
                 3d human pose estimation. In International Conference
                 on 3D Vision (3DV), pages 42–52. IEEE, 2021. 7 <br />
-                [8] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu,
-                and Mark Chen. Hierarchical text-conditional image generation
-                with clip latents. arXiv preprint arXiv:2204.06125,
-                2022. 7 <br />
-                [9] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+                [8] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
                 Patrick Esser, and Björn Ommer. High-resolution image
                 synthesis with latent diffusion models. In Proceedings of
                 the IEEE/CVF Conference on Computer Vision and Pattern
                 Recognition (CVPR), pages 10684–10695, 2022. 4, 7 <br />
-                [10] Chitwan Saharia, William Chan, Saurabh Saxena, Lala
-                Li, Jay Whang, Emily Denton, Seyed Kamyar Seyed
-                Ghasemipour, Burcu Karagol Ayan, S Sara Mahdavi,
-                Rapha Gontijo Lopes, et al. Photorealistic text-to-image
-                diffusion models with deep language understanding. arXiv
-                preprint arXiv:2205.11487, 2022. 7 <br />
-                [11] Lvmin Zhang and Maneesh Agrawala. Adding conditional
+                [9] Lvmin Zhang and Maneesh Agrawala. Adding conditional
                 control to text-to-image diffusion models. arXiv preprint
                 arXiv:2302.05543, 2023. 1, 2, 3, 4, 5, 6, 7 <br />
                 </p>
             </div>
 
-            <div class="section-title">BibTeX</div>
-            <div class="content">
-            <pre  align="left">
-@inproceedings{ju2023humanart,
-title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-author={Ju, Xuan and Zeng, Ailing and Jianan, Wang and Qiang, Xu and Lei, Zhang},
-booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
-year={2023}}</pre>
-            </div>
+ 
 
             <!-- <div class="section-title">Approach Overview</div>
 
