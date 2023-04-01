@@ -1,0 +1,6 @@
+[submodule "mmdetection"]
+	path = mmdetection
+	url = git@github.com:juxuan27/mmdetection.git
+[submodule "mmpose"]
+	path = mmpose
+	url = git@github.com:juxuan27/mmpose.git
