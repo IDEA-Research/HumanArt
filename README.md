@@ -52,20 +52,6 @@ This paper proposes a large-scale dataset, Human-Art, that targets multi-scenari
 - `out-of-domain` human detection and human pose estimation
 
 
-## Features
-
-Contrast with previous datasets:
-
-<div  align="center">    
-<img src="resources/dataset_contrast.png" width="90%">
-</div>
-
-Data collection & annotation process:
-
-<div  align="center">    
-<img src="resources/collection.png" width="70%">
-</div>
-
 
 ## Dataset Download
 
@@ -361,10 +347,10 @@ If you find this repository useful for your work, please consider citing it as f
 
 ```bibtex
 @inproceedings{ju2023human,
-  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023},
+    title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
+    author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    year={2023},
 }
 ```
 
