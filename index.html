@@ -56,33 +56,16 @@
                 margin-bottom: -5px;
                 display: none;
             }
-            .glide1__slide:hover {cursor: grab;}
-            .glide1__slide:active {cursor: grabbing;}
-            .glide1__slide img {width: 90%;}
-            .glide1__bullets {
+            .glide__slide:hover {cursor: grab;}
+            .glide__slide:active {cursor: grabbing;}
+            .glide__slide img {width: 90%;}
+            .glide__bullets {
                 text-align: center;
             }
-            .glide1__bullet--active {
+            .glide__bullet--active {
                 color: #aaa; 
             }
-            .glide2__slide:hover {cursor: grab;}
-            .glide2__slide:active {cursor: grabbing;}
-            .glide2__slide img {width: 90%;}
-            .glide2__bullets {
-                text-align: center;
-            }
-            .glide2__bullet--active {
-                color: #aaa; 
-            }
-            .glide3__slide:hover {cursor: grab;}
-            .glide3__slide:active {cursor: grabbing;}
-            .glide3__slide img {width: 90%;}
-            .glide3__bullets {
-                text-align: center;
-            }
-            .glide3__bullet--active {
-                color: #aaa; 
-            }
+
 
             @media (max-width: 400px) {
                 .render_window {
@@ -221,7 +204,7 @@
                 making existing models fail in these scenarios. </p>
                 <p>As an abstraction of life, art incorporates humans in both
                 natural and artificial scenes. We take advantage of it and
-                introduce the Human-Art dataset to bridge related tasks in
+                introduce the <strong>Human-Art dataset</strong> to bridge related tasks in
                 natural and artificial scenarios. Specifically, Human-Art
                 contains 50k high-quality images with over 123k person
                 instances from 5 natural and 15 artificial scenarios, which
@@ -241,90 +224,82 @@
             <div class="section-title">Contents of Human-Art</div>
             <div class="content">
                 <p>
-                <u>50,000</u> images including more than <u>123,000</u> human figures in <u>20 scenarios</u>
+                    <font color=red>50,000</font> images including more than <font color=red>123,000</font> human figures in <font color=red>20 scenarios</font>
                 </p>
                 <p>
-                - 5 natural scenarios <br/> 
+                [5 natural scenarios] <br/> 
                 </p>
                 <div class="glide1">
-                    <div class="glide1__bullets" data-glide-el="controls[nav]">
-                        <button class="glide1__bullet" data-glide-dir="=0">Acrobatics</button>
-                        <button class="glide1__bullet" data-glide-dir="=1">Cosplay</button>
-                        <button class="glide1__bullet" data-glide-dir="=2">Dance</button>
-                        <button class="glide1__bullet" data-glide-dir="=3">Drama</button>
-                        <button class="glide1__bullet" data-glide-dir="=4">Movie</button>
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0">Acrobatics</button>
+                        <button class="glide__bullet" data-glide-dir="=1">Cosplay</button>
+                        <button class="glide__bullet" data-glide-dir="=2">Dance</button>
+                        <button class="glide__bullet" data-glide-dir="=3">Drama</button>
+                        <button class="glide__bullet" data-glide-dir="=4">Movie</button>
                     </div>
-                    <div class="glide1__track" data-glide-el="track">
-                        <ul class="glide1__slides">
-                            <li class="glide1__slide"><img src="src/real_images/acrobatics.png"></li>
-                            <li class="glide1__slide"><img src="src/real_images/cosplay.png"></li>
-                            <li class="glide1__slide"><img src="src/real_images/dance.png"></li>
-                            <li class="glide1__slide"><img src="src/real_images/drama.png"></li>
-                            <li class="glide1__slide"><img src="src/real_images/movie.png"></li>
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide"><img src="src/real_images/acrobatics.png"></li>
+                            <li class="glide__slide"><img src="src/real_images/cosplay.png"></li>
+                            <li class="glide__slide"><img src="src/real_images/dance.png"></li>
+                            <li class="glide__slide"><img src="src/real_images/drama.png"></li>
+                            <li class="glide__slide"><img src="src/real_images/movie.png"></li>
                         </ul>
                     </div>
                 </div>
                 <p>
-                - 3 2D artificial scenarios <br/>
+                [3 2D artificial scenarios] <br/>
                 </p>
                 <div class="glide2">
-                    <div class="glide2__bullets" data-glide-el="controls[nav]">
-                        <button class="glide2__bullet" data-glide-dir="=0">Garage Kits</button>
-                        <button class="glide2__bullet" data-glide-dir="=1">Relief</button>
-                        <button class="glide2__bullet" data-glide-dir="=2">Sculpture</button>
+                    <div class="glide__bullets" data-glide-el="controls[nav]">
+                        <button class="glide__bullet" data-glide-dir="=0">Garage Kits</button>
+                        <button class="glide__bullet" data-glide-dir="=1">Relief</button>
+                        <button class="glide__bullet" data-glide-dir="=2">Sculpture</button>
                     </div>
-                    <div class="glide2__track" data-glide-el="track">
-                        <ul class="glide2__slides">
-                            <li class="glide2__slide"><img src="src/3d_images/garage kits.png"></li>
-                            <li class="glide2__slide"><img src="src/3d_images/relief.png"></li>
-                            <li class="glide2__slide"><img src="src/3d_images/sculpture.PNG"></li>
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide"><img src="src/3d_images/garage kits.png"></li>
+                            <li class="glide__slide"><img src="src/3d_images/relief.png"></li>
+                            <li class="glide__slide"><img src="src/3d_images/sculpture.PNG"></li>
                         </ul>
                     </div>
                 </div>
-                - 12 2D artificial scenarios
+                <p>
+                [12 2D artificial scenarios]
+                </p>
                     <div class="glide3">
-                        <div class="glide3__bullets" data-glide-el="controls[nav]">
-                            <button class="glide3__bullet" data-glide-dir="=0">Cartoon</button>
-                            <button class="glide3__bullet" data-glide-dir="=1">Digital Art</button>
-                            <button class="glide3__bullet" data-glide-dir="=2">Ink Painting</button>
-                            <button class="glide3__bullet" data-glide-dir="=3">Kids Drawing</button>
-                            <button class="glide3__bullet" data-glide-dir="=4">Mural</button>
-                            <button class="glide3__bullet" data-glide-dir="=5">Oil Painting</button>
-                            <button class="glide3__bullet" data-glide-dir="=6">Shadow Play</button>
-                            <button class="glide3__bullet" data-glide-dir="=7">Sketch</button>
-                            <button class="glide3__bullet" data-glide-dir="=8">Stained Glass</button>
-                            <button class="glide3__bullet" data-glide-dir="=9">Ukiyoe</button>
-                            <button class="glide3__bullet" data-glide-dir="=10">Watercolor</button>
+                        <div class="glide__bullets" data-glide-el="controls[nav]">
+                            <button class="glide__bullet" data-glide-dir="=0">Cartoon</button>
+                            <button class="glide__bullet" data-glide-dir="=1">Digital Art</button>
+                            <button class="glide__bullet" data-glide-dir="=2">Ink Painting</button>
+                            <button class="glide__bullet" data-glide-dir="=3">Kids Drawing</button>
+                            <button class="glide__bullet" data-glide-dir="=4">Mural</button>
+                            <button class="glide__bullet" data-glide-dir="=5">Oil Painting</button>
+                            <button class="glide__bullet" data-glide-dir="=6">Shadow Play</button>
+                            <button class="glide__bullet" data-glide-dir="=7">Sketch</button>
+                            <button class="glide__bullet" data-glide-dir="=8">Stained Glass</button>
+                            <button class="glide__bullet" data-glide-dir="=9">Ukiyoe</button>
+                            <button class="glide__bullet" data-glide-dir="=10">Watercolor</button>
                         </div>
-                        <div class="glide3__track" data-glide-el="track">
-                            <ul class="glide3__slides">
-                                <li class="glide3__slide"><img src="src/2d_images/cartoon.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/digital art.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/ink painting.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/kids drawing.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/mural.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/oil painting.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/shadow play.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/sketch.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/stained glass.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/ukiyoe.png"></li>
-                                <li class="glide3__slide"><img src="src/2d_images/watercolor.png"></li>
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide"><img src="src/2d_images/cartoon.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/digital art.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/ink painting.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/kids drawing.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/mural.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/oil painting.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/shadow play.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/sketch.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/stained glass.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/ukiyoe.png"></li>
+                                <li class="glide__slide"><img src="src/2d_images/watercolor.png"></li>
                             </ul>
                         </div>
                     </div>
                 
-                Human-centric annotations include <u>human bounding box, 21 2D human keypoints, human self-contact keypoints, and description text</u>
-                    <img src="src\annotation.png" style="width:50%;">
-
-                <div class="section-title">Target Tasks</div>
-
-                <ul>
-                    <li>multi-scenario <u>human detection</u>, <u>2D human pose estimation</u>, and <u>3D human mesh recovery</u></li>
-                    <li>multi-scenario <u>human image generation</u> (especially <u>controllable</u> human image generation, e.g. with conditions such as pose and text)</li>
-                    <li><u>out-of-domain</u> human detection and human pose estimation</li>
-                </ul>
-
-                
+                    <font color=red>Human-centric annotations</font> include human bounding box, 21 2D human keypoints, human self-contact keypoints, and description text
+                    <img src="src\annotation.png" style="width:50%;">                
             </div>
 
 
@@ -338,6 +313,16 @@
             <div class="content">
                 <img src="src\collection.png" style="width:50%;">
                 <p class="caption">Data collection and annotation processes. The entire labeling process ensures an accuracy of at least 98%. </p>
+            </div>
+
+            
+            <div class="section-title">Target Tasks</div>
+            <div class="content">
+                <ul>
+                    <li>multi-scenario human detection, 2D human pose estimation, and 3D human mesh recovery</li>
+                    <li>multi-scenario human image generation (especially controllable human image generation, e.g. with conditions such as pose and text)</li>
+                    <li>out-of-domain human detection and human pose estimation</li>
+                </ul>
             </div>
 
             <div class="section-title">Downstream Tasks - 1 Human Detection</div>
@@ -432,10 +417,10 @@
             <div class="content">
             <pre  align="left">
 @inproceedings{ju2023humanart,
-title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-author={Ju, Xuan and Zeng, Ailing and Jianan, Wang and Qiang, Xu and Lei, Zhang},
-booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
-year={2023}}</pre>
+    title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
+    author={Ju, Xuan and Zeng, Ailing and Jianan, Wang and Qiang, Xu and Lei, Zhang},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+    year={2023}}</pre>
             </div>
 
             <div class="section-title">Contact Us</div>
@@ -443,7 +428,7 @@ year={2023}}</pre>
 
             <p> For detailed questions about this work, please contact juxuan.27@gmail.com </p>
             
-            <p> We are looking for talented, motivated, and creative research and engineering interns working on human-centric visual understanding and generation topics. If you are interested, please send your CV to Ailing Zeng (zengailing@idea.edu.cn).</p>
+            <p> We are <font color=red>looking for</font> talented, motivated, and creative <font color=red>research and engineering interns</font> working on human-centric visual understanding and generation topics. If you are interested, please send your CV to Ailing Zeng (zengailing@idea.edu.cn).</p>
 
             </div>
 
@@ -1004,29 +989,29 @@ year={2023}}</pre>
         </script>
         <script>
             // Make the carousel for the comparisons
-            var glide1 = new Glide(".glide", {
+            var glide1 = new Glide(".glide1", {
                 type: "carousel",
                 startAt: 0,
                 perView: 1,
-                autoplay: 2000
+                autoplay: 4000
             }).mount();
         </script>
         <script>
             // Make the carousel for the comparisons
-            var glide2 = new Glide(".glide", {
+            var glide2 = new Glide(".glide2", {
                 type: "carousel",
                 startAt: 0,
                 perView: 1,
-                autoplay: 2000
+                autoplay: 4000
             }).mount();
         </script>
         <script>
             // Make the carousel for the comparisons
-            var glide3 = new Glide(".glide", {
+            var glide3 = new Glide(".glide3", {
                 type: "carousel",
                 startAt: 0,
                 perView: 1,
-                autoplay: 2000
+                autoplay: 4000
             }).mount();
         </script>
     </body>
