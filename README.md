@@ -10,7 +10,7 @@
 # Human-Art
 
 This repository contains the implementation of the following paper:
-> **Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes** [[Project Page]]() [[Paper]](https://arxiv.org/abs/2303.02760#) [[Code]](https://github.com/IDEA-Research/HumanArt) [[Data]](https://forms.gle/UVv1GiNJNQsE4qif7) <br>
+> **Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes** [[Project Page]](https://idea-research.github.io/HumanArt/) [[Paper]](https://arxiv.org/abs/2303.02760) [[Code]](https://github.com/IDEA-Research/HumanArt) [[Data]](https://forms.gle/UVv1GiNJNQsE4qif7) <br>
 > [Xuan Ju](https://juxuan.space/)<sup>∗12</sup>, [Ailing Zeng](https://ailingzeng.site/)<sup>∗1</sup>, [Jianan Wang](https://github.com/wendyjnwang/)<sup>1</sup>, [Qiang Xu](https://cure-lab.github.io/)<sup>2</sup>, [Lei Zhang](https://www.leizhang.org/)<sup>1</sup><br>
 > <sup>∗</sup> Equal contribution <sup>1</sup>International Digital Economy Academy <sup>2</sup>The Chinese University of Hong Kong
 
