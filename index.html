@@ -225,7 +225,7 @@
                 <u>50,000</u> images including more than <u>123,000</u> human figures in <u>20 scenarios</u>
 
                 - 5 natural scenarios <br/> 
-                <div class="glide">
+                <div class="glide1">
                     <div class="glide__bullets" data-glide-el="controls[nav]">
                         <button class="glide__bullet" data-glide-dir="=0">Acrobatics</button>
                         <button class="glide__bullet" data-glide-dir="=1">Cosplay</button>
@@ -244,7 +244,7 @@
                     </div>
                 </div>
                 - 3 2D artificial scenarios <br/>
-                <div class="glide">
+                <div class="glide2">
                     <div class="glide__bullets" data-glide-el="controls[nav]">
                         <button class="glide__bullet" data-glide-dir="=0">Garage Kits</button>
                         <button class="glide__bullet" data-glide-dir="=1">Relief</button>
@@ -259,7 +259,7 @@
                     </div>
                 </div>
                 - 12 2D artificial scenarios
-                    <div class="glide">
+                    <div class="glide3">
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                             <button class="glide__bullet" data-glide-dir="=0">Cartoon</button>
                             <button class="glide__bullet" data-glide-dir="=1">Digital Art</button>
@@ -980,7 +980,25 @@ year={2023}}</pre>
         </script>
         <script>
             // Make the carousel for the comparisons
-            var glide = new Glide(".glide", {
+            var glide1 = new Glide(".glide", {
+                type: "carousel",
+                startAt: 0,
+                perView: 1,
+                autoplay: 2000
+            }).mount();
+        </script>
+        <script>
+            // Make the carousel for the comparisons
+            var glide2 = new Glide(".glide", {
+                type: "carousel",
+                startAt: 0,
+                perView: 1,
+                autoplay: 2000
+            }).mount();
+        </script>
+        <script>
+            // Make the carousel for the comparisons
+            var glide3 = new Glide(".glide", {
                 type: "carousel",
                 startAt: 0,
                 perView: 1,
