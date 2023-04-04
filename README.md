@@ -24,8 +24,6 @@ This repository contains the implementation of the following paper:
   4. [Human Detection](#human-detection)
   5. [Human Pose Estimation](#human-pose-estimation)
   6. [Citing Human-Art](#citing-human-art)
-  7. [Acknowledgement](#acknowledgement)
-  8. [Reference](#reference)
 
 
 
@@ -43,7 +41,7 @@ This paper proposes a large-scale dataset, Human-Art, that targets multi-scenari
 
 - `50,000` images including human figures in `20 scenarios` (5 natural scenarios, 3 2D artificial scenarios, and 12 2D artificial scenarios)
 - Human-centric annotations include `human bounding box`, `21 2D human keypoints`, `human self-contact keypoints`, and `description text`
-- baseline human detector and human pose estimator trained on the assembly of MSCOCO[<sup>[1]</sup>](#refer-anchor-1) and Human-Art
+- baseline human detector and human pose estimator trained on the joint of [MSCOCO](https://cocodataset.org/) and Human-Art
 
 **Tasks that Human-Art targets for:**
 
@@ -56,9 +54,9 @@ This paper proposes a large-scale dataset, Human-Art, that targets multi-scenari
 ## Dataset Download
 
 
-Under the CC-license, Human-Art is available for download. Fill out [this form](https://forms.gle/UVv1GiNJNQsE4qif7) to request authorization to use Human-Art for non-commercial purposes. After you submit the form, an email containing the dataset will be instantly delivered to you.
+Under the CC-license, Human-Art is available for download. Fill out [this form](https://forms.gle/UVv1GiNJNQsE4qif7) to request authorization to use Human-Art for non-commercial purposes. After you submit the form, an email containing the dataset will be instantly delivered to you. Please do not share or transfer the data privately.
 
-For convenience of usage, Human-Art is processed using the same format as MSCOCO[<sup>[1]</sup>](#refer-anchor-1). Please save the dataset with the following file structure after downloading (we also include the file structure of COCO because we use it for assembly training of COCO and Human-Art):
+For convenience of usage, Human-Art is processed using the same format as [MSCOCO](https://cocodataset.org/). Please save the dataset with the following file structure after downloading (we also include the file structure of COCO because we use it for joint training of COCO and Human-Art):
 
 ```
 |-- data
@@ -208,7 +206,7 @@ git clone --recurse-submodules git@github.com:IDEA-Research/HumanArt.git
 
 For ease of use, we employ [MMPose](https://github.com/open-mmlab/mmpose) as the code base of human pose estimation. MMPose is an open-source toolbox for pose estimation based on PyTorch that support diverse tasks, various models and datasets with higher efficiency and higher accuracy.
 
-To train and evaluate human pose estimator, you can directly edit config files in `mmpose/configs`. We have provided one example for both bottom-up algorithm and top-down algorithm (in `mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart` and `mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/humanart`). Future releases will include more models. You can also train your own model following the edition shown in our example.
+To train and evaluate human pose estimator, you can directly edit config files in `mmpose/configs`. We have provided one example for both bottom-up algorithm and top-down algorithm (in `mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart` and `mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/humanart`). Moreover, we provide checkpoints training on one-stage method ED-Pose. Future releases will include more models. You can also train your own model following the edition shown in our example.
 
 The supported models include:
 
@@ -341,6 +339,57 @@ Results on COCO val2017 without multi-scale test
 | [HigherHRNet-w48_udp](mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart/higherhrnet_w48_humanart_512x512_udp.py) |  512x512   | 0.668 |      0.860      |      0.726      | 0.718 |      0.886      | [ckpt](https://drive.google.com/file/d/1fqPy44k-bYb6XqJXMZ5b9gVTzcIjOlPQ/view?usp=share_link) |
 
 
+
+
+
+<!-- [ALGORITHM] -->
+
+<details>
+<summary align="right"><a href="https://arxiv.org/pdf/2302.01593.pdf">ED-Pose (ICLR 2023)</a></summary>
+
+```bibtex
+@inproceedings{
+yang2023explicit,
+  title={Explicit Box Detection Unifies End-to-End Multi-Person Pose Estimation},
+  author={Jie Yang and Ailing Zeng and Shilong Liu and Feng Li and Ruimao Zhang and Lei Zhang},
+  booktitle={International Conference on Learning Representations},
+  year={2023},
+  url={https://openreview.net/forum?id=s4WVupnJjmX}
+}
+```
+
+
+</details>
+
+<!-- [DATASET] -->
+
+<details>
+<summary align="right"><a href="https://arxiv.org/abs/2303.02760">Human-Art (CVPR'2023)</a></summary>
+
+```bibtex
+@inproceedings{ju2023human,
+  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
+  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023},
+}
+```
+
+</details>
+
+Results on Human-Art validation set
+
+| Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
+| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
+| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.723 |      0.861      |      0.774      | 0.808 |      0.921      | [ckpt]() | 
+
+
+Results on COCO val2017
+
+| Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
+| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
+| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.724 |      0.898      |      0.794      | 0.799 |      0.946      | [ckpt]() | 
+
 ## Citing Human-Art
 
 If you find this repository useful for your work, please consider citing it as follows:
@@ -353,14 +402,3 @@ If you find this repository useful for your work, please consider citing it as f
     year={2023},
 }
 ```
-
-## Acknowledgement
-
-This work was supported in part by the Shenzhen-Hong Kong-Macau Science and Technology Program (Category C) of the Shenzhen Science Technology and Innovation Commission under Grant No. SGDX2020110309500101 and in part by Research Matching Grant CSE-7-2022.
-
-
-
-## Reference
-
-<div id="refer-anchor-1"></div>
-[1] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Dollár, and C Lawrence Zitnick. Microsoft COCO: Common objects in context. In European Conference on Computer Vision (ECCV), pages 740–755. Springer, 2014.
