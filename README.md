@@ -381,14 +381,14 @@ Results on Human-Art validation set
 
 | Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
 | :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.723 |      0.861      |      0.774      | 0.808 |      0.921      | [ckpt]() | 
+| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.723 |      0.861      |      0.774      | 0.808 |      0.921      | [ckpt](https://drive.google.com/file/d/15qasCeafI011ZWCGAe3I4ZdRsGMXBc9X/view?usp=share_link) | 
 
 
 Results on COCO val2017
 
 | Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
 | :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.724 |      0.898      |      0.794      | 0.799 |      0.946      | [ckpt]() | 
+| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.724 |      0.898      |      0.794      | 0.799 |      0.946      | [ckpt](https://drive.google.com/file/d/15qasCeafI011ZWCGAe3I4ZdRsGMXBc9X/view?usp=share_link) | 
 
 ## Citing Human-Art
 
