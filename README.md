@@ -95,6 +95,8 @@ Noted that we have several different json settings:
 
 - the ones end with \_humanart\_\[scenario\] (e.g. training\_humanart_cartoon.json) is the annotation json files of one specific scenario of Human-Art
 
+- HumanArt_validation_detections_AP_H_56_person.json is the detection results with an AP of 56 for the evaluation of top-down pose estimation models (similar with COCO_val2017_detections_AP_H_56_person.json in MSCOCO)
+
 
 The annotation json files of Human-Art is described as follows:
 
