@@ -379,6 +379,8 @@ yang2023explicit,
 
 </details>
 
+**Noted that training with Human-Art on [ED-Pose](https://openreview.net/forum?id=s4WVupnJjmX) can lead to a performance boost on MSCOCO!**
+
 Results on Human-Art validation set
 
 | Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
