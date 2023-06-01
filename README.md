@@ -10,7 +10,7 @@
 # Human-Art
 
 This repository contains the implementation of the following paper:
-> **Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes** [[Project Page]](https://idea-research.github.io/HumanArt/) [[Paper]](https://arxiv.org/abs/2303.02760) [[Code]](https://github.com/IDEA-Research/HumanArt) [[Data]](https://forms.gle/UVv1GiNJNQsE4qif7) <br>
+> **Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes** [[Project Page]](https://idea-research.github.io/HumanArt/) [[Paper]](https://arxiv.org/abs/2303.02760) [[Code]](https://github.com/IDEA-Research/HumanArt) [[Data]](https://forms.gle/UVv1GiNJNQsE4qif7) [[Video]](https://www.youtube.com/watch?v=djmTKVlw53E) <br>
 > [Xuan Ju](https://juxuan.space/)<sup>∗12</sup>, [Ailing Zeng](https://ailingzeng.site/)<sup>∗1</sup>, [Jianan Wang](https://github.com/wendyjnwang/)<sup>1</sup>, [Qiang Xu](https://cure-lab.github.io/)<sup>2</sup>, [Lei Zhang](https://www.leizhang.org/)<sup>1</sup><br>
 > <sup>∗</sup> Equal contribution <sup>1</sup>International Digital Economy Academy <sup>2</sup>The Chinese University of Hong Kong
 
@@ -19,11 +19,10 @@ This repository contains the implementation of the following paper:
 **Table of Contents**
 
   1. [General Description](#general-description)
-  2. [Features](#features)
-  3. [Dataset Download](#dataset-download)
-  4. [Human Detection](#human-detection)
-  5. [Human Pose Estimation](#human-pose-estimation)
-  6. [Citing Human-Art](#citing-human-art)
+  2. [Dataset Download](#dataset-download)
+  3. [Human Detection](#human-detection)
+  4. [Human Pose Estimation](#human-pose-estimation)
+  5. [Citing Human-Art](#citing-human-art)
 
 
 
@@ -46,6 +45,7 @@ This paper proposes a large-scale dataset, Human-Art, that targets multi-scenari
 **Tasks that Human-Art targets for:**
 
 - multi-scenario `human detection`, `2D human pose estimation`, and `3D human mesh recovery`
+    - Notably, after training with ED-Pose, results on MSCOCO raise 0.8, indicating multi-scenario images may benefit feature extraction and human understanding of real scenes.
 - multi-scenario `human image generation` (especially `controllable` human image generation, e.g. with conditions such as pose and text)
 - `out-of-domain` human detection and human pose estimation
 
