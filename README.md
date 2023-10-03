@@ -18,11 +18,12 @@ This repository contains the implementation of the following paper:
 
 **Table of Contents**
 
-  1. [General Description](#general-description)
-  2. [Dataset Download](#dataset-download)
-  3. [Human Detection](#human-detection)
-  4. [Human Pose Estimation](#human-pose-estimation)
-  5. [Citing Human-Art](#citing-human-art)
+- [Human-Art](#human-art)
+  - [General Description](#general-description)
+  - [Dataset Download](#dataset-download)
+  - [Human Pose Estimation](#human-pose-estimation)
+  - [Human Detection](#human-detection)
+  - [Citing Human-Art](#citing-human-art)
 
 
 
@@ -138,261 +139,83 @@ The annotation json files of Human-Art is described as follows:
 }
 ```
 
+## Human Pose Estimation
+
+
+Human pose estimators trained on Human-Art is now supported in [MMPose](https://github.com/open-mmlab/mmpose) in this [pr](https://github.com/open-mmlab/mmpose/pull/2304). The detailed usage and Model Zoo can be found in MMPose's documents: [(1) ViTPose](https://github.com/open-mmlab/mmpose/blob/main/configs/body_2d_keypoint/topdown_heatmap/humanart/vitpose_humanart.md), [(2) HRNet](https://github.com/open-mmlab/mmpose/blob/main/configs/body_2d_keypoint/topdown_heatmap/humanart/hrnet_humanart.md), and [(3) RTMPose](https://github.com/open-mmlab/mmpose/blob/main/configs/body_2d_keypoint/rtmpose/humanart/rtmpose_humanart.md).
+
+
+To train and evaluate human pose estimators, please refer to  [MMPose](https://github.com/open-mmlab/mmpose). Due to the frequent update of MMPose, we do not maintain a codebase in this repo. Since Human-Art is compatible with MSCOCO, you can train and evaluate any model in MMPose using its dataloader. 
+
+The supported model include (xx-coco means trained on MSCOCO only and xx-humanart-coco means trained on Human-Art and MSCOCO):
+
+Results of ViTPose on Human-Art validation dataset with ground-truth bounding-box
+
+> With classic decoder
+
+| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      |                      log                      |
+| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | :-------------------------------------------: |
+| [ViTPose-S-coco](/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-small_8xb64-210e_coco-256x192.py) |  256x192   | 0.507 |      0.758      |      0.531      | 0.551 |      0.780      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-small_8xb64-210e_coco-256x192-62d7a712_20230314.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-small_8xb64-210e_coco-256x192-62d7a712_20230314.json) |
+| [ViTPose-S-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_ViTPose-small_8xb64-210e_humanart-256x192.py) |  256x192   | 0.738 |      0.905      |      0.802      | 0.768 |      0.911      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-small_8xb64-210e_humanart-256x192-5cbe2bfc_20230611.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-small_8xb64-210e_humanart-256x192-5cbe2bfc_20230611.json) |
+| [ViTPose-B-coco](/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-base_8xb64-210e_coco-256x192.py) |  256x192   | 0.555 |      0.782      |      0.590      | 0.599 |      0.809      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-base_8xb64-210e_coco-256x192-216eae50_20230314.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-base_8xb64-210e_coco-256x192-216eae50_20230314.json) |
+| [ViTPose-B-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_ViTPose-base_8xb64-210e_humanart-256x192.py) |  256x192   | 0.759 |      0.905      |      0.823      | 0.790 |      0.917      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-base_8xb64-210e_humanart-256x192-b417f546_20230611.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-base_8xb64-210e_humanart-256x192-b417f546_20230611.json) |
+| [ViTPose-L-coco](/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-base_8xb64-210e_coco-256x192.py) |  256x192   | 0.637 |      0.838      |      0.689      | 0.677 |      0.859      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-large_8xb64-210e_coco-256x192-53609f55_20230314.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-large_8xb64-210e_coco-256x192-53609f55_20230314.json) |
+| [ViTPose-L-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_ViTPose-base_8xb64-210e_humanart-256x192.py) |  256x192   | 0.789 |      0.916      |      0.845      | 0.819 |      0.929      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-large_8xb64-210e_humanart-256x192-9aba9345_20230614.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-large_8xb64-210e_humanart-256x192-9aba9345_20230614.json) |
+| [ViTPose-H-coco](/configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-huge_8xb64-210e_coco-256x192.py) |  256x192   | 0.665 |      0.860      |      0.715      | 0.701 |      0.871      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-huge_8xb64-210e_coco-256x192-e32adcd4_20230314.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_ViTPose-huge_8xb64-210e_coco-256x192-e32adcd4_20230314.json) |
+| [ViTPose-H-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_ViTPose-huge_8xb64-210e_humanart-256x192.py) |  256x192   | 0.800 |      0.926      |      0.855      | 0.828 |      0.933      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-huge_8xb64-210e_humanart-256x192-603bb573_20230612.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_ViTPose-huge_8xb64-210e_humanart-256x192-603bb573_20230612.json) |
+
+
+Results of HRNet on Human-Art validation dataset with ground-truth bounding-box
+
+> With classic decoder
+
+| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      |                      log                      |
+| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | :-------------------------------------------: |
+| [pose_hrnet_w32-coco](configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w32_8xb64-210e_coco-256x192.py) |  256x192   | 0.533 |      0.771      |      0.562      | 0.574 |      0.792      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w32_8xb64-210e_coco-256x192-81c58e40_20220909.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w32_8xb64-210e_coco-256x192_20220909.log) |
+| [pose_hrnet_w32-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_hrnet-w32_8xb64-210e_humanart-256x192.py) |  256x192   | 0.754 |      0.906      |      0.812      | 0.783 |      0.916      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_hrnet-w32_8xb64-210e_humanart-256x192-0773ef0b_20230614.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_hrnet-w32_8xb64-210e_humanart-256x192-0773ef0b_20230614.json) |
+| [pose_hrnet_w48-coco](configs/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w48_8xb32-210e_coco-256x192.py) |  256x192   | 0.557 |      0.782      |      0.593      | 0.595 |      0.804      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w48_8xb32-210e_coco-256x192-0e67c616_20220913.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_hrnet-w48_8xb32-210e_coco-256x192_20220913.log) |
+| [pose_hrnet_w48-humanart-coco](configs/body_2d_keypoint/topdown_heatmap/humanart/td-hm_hrnet-w48_8xb32-210e_humanart-256x192.py) |  256x192   | 0.769 |      0.906      |      0.825      | 0.796 |      0.919      | [ckpt](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_hrnet-w48_8xb32-210e_humanart-256x192-05178983_20230614.pth) | [log](https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/human_art/td-hm_hrnet-w48_8xb32-210e_humanart-256x192-05178983_20230614.json) |
+
+
+Results of RTM-Pose on Human-Art validation dataset with ground-truth bounding-box 
+
+| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      |                      log                      |
+| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | :-------------------------------------------: |
+| [rtmpose-t-coco](/configs/body_2d_keypoint/rtmpose/coco/rtmpose-t_8xb256-420e_coco-256x192.py) |  256x192   | 0.444 |      0.725      |      0.453      | 0.488 |      0.750      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-tiny_simcc-coco_pt-aic-coco_420e-256x192-e613ba3f_20230127.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-tiny_simcc-coco_pt-aic-coco_420e-256x192-e613ba3f_20230127.json) |
+| [rtmpose-t-humanart-coco](/configs/body_2d_keypoint/rtmpose/humanart/rtmpose-t_8xb256-420e_humanart-256x192.py) |  256x192   | 0.655 |      0.872      |      0.720      | 0.693 |      0.890      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-t_8xb256-420e_humanart-256x192-60b68c98_20230612.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-t_8xb256-420e_humanart-256x192-60b68c98_20230612.json) |
+| [rtmpose-s-coco](/configs/body_2d_keypoint/rtmpose/coco/rtmpose-s_8xb256-420e_coco-256x192.py) |  256x192   | 0.480 |      0.739      |      0.498      | 0.521 |      0.763      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-s_simcc-coco_pt-aic-coco_420e-256x192-8edcf0d7_20230127.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-s_simcc-coco_pt-aic-coco_420e-256x192-8edcf0d7_20230127.json) |
+| [rtmpose-s-humanart-coco](/configs/body_2d_keypoint/rtmpose/humanart/rtmpose-s_8xb256-420e_humanart-256x192.py) |  256x192   | 0.698 |      0.893      |      0.768      | 0.732 |      0.903      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-s_8xb256-420e_humanart-256x192-5a3ac943_20230611.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-s_8xb256-420e_humanart-256x192-5a3ac943_20230611.json) |
+| [rtmpose-m-coco](/configs/body_2d_keypoint/rtmpose/coco/rtmpose-m_8xb256-420e_coco-256x192.py) |  256x192   | 0.532 |      0.765      |      0.563      | 0.571 |      0.789      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_simcc-coco_pt-aic-coco_420e-256x192-d8dd5ca4_20230127.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_simcc-coco_pt-aic-coco_420e-256x192-d8dd5ca4_20230127.json) |
+| [rtmpose-m-humanart-coco](/configs/body_2d_keypoint/rtmpose/humanart/rtmpose-m_8xb256-420e_humanart-256x192.py) |  256x192   | 0.728 |      0.895      |      0.791      | 0.759 |      0.906      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_8xb256-420e_humanart-256x192-8430627b_20230611.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_8xb256-420e_humanart-256x192-8430627b_20230611.json) |
+| [rtmpose-l-coco](/configs/body_2d_keypoint/rtmpose/coco/rtmpose-l_8xb256-420e_coco-256x192.py) |  256x192   | 0.564 |      0.789      |      0.602      | 0.599 |      0.808      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-l_simcc-coco_pt-aic-coco_420e-256x192-1352a4d2_20230127.json) |
+| [rtmpose-l-humanart-coco](/configs/body_2d_keypoint/rtmpose/humanart/rtmpose-l_8xb256-420e_humanart-256x192.py) |  256x192   | 0.753 |      0.905      |      0.812      | 0.783 |      0.915      | [ckpt](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-l_8xb256-420e_humanart-256x192-389f2cb0_20230611.pth) | [log](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-l_8xb256-420e_humanart-256x192-389f2cb0_20230611.json) |
+
+
 ## Human Detection
 
-You need to use the following clone command to include sub module mmdetection
 
-```shell
-git clone --recurse-submodules git@github.com:IDEA-Research/HumanArt.git
-```
+Human detectors trained on Human-Art is now supported in [MMPose](https://github.com/open-mmlab/mmpose) in this [pr](https://github.com/open-mmlab/mmpose/pull/2724). The detailed usage and Model Zoo can be found [here](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose).
 
-For ease of use, we employ [MMDetection](https://github.com/open-mmlab/mmdetection) as the code base of human detection. MMDetection is an open source object detection toolbox based on PyTorch that support diverse detection frameworks with higher efficiency and higher accuracy.
 
-To train and evaluate human detection, you can directly edit config files in `mmdetection/configs`. We have provided one example in `mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_humanart.py`. Future releases will include more models.
+To train and evaluate human detectors, please refer to  [MMDetection](https://github.com/open-mmlab/mmdetection), which is an open source object detection toolbox based on PyTorch that support diverse detection frameworks with higher efficiency and higher accuracy. Due to the frequent update of MMDetection, we do not maintain a codebase in this repo. Since Human-Art is compatible with MSCOCO, you can train and evaluate any model in MMDetection using its dataloader.
 
 The supported model include:
 
-<!-- [ALGORITHM] -->
 
-<details>
-<summary align="right"><a href="https://proceedings.neurips.cc/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf">Faster R-CNN (CVPR'2019)</a></summary>
+|       Detection Config        |  Model AP<sup><br> |      Download        |
+| :---------------------------: | :---------------------------: | :---------------------------: |
+| [RTMDet-tiny](./rtmdet/person/rtmdet_tiny_8xb32-300e_humanart.py) |            46.6        | [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmdet_tiny_8xb32-300e_humanart-7da5554e.pth) |
+| [RTMDet-s](./rtmdet/person/rtmdet_s_8xb32-300e_humanart.py) |          50.6              | [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmdet_s_8xb32-300e_humanart-af5bd52d.pth) |
+| [YOLOX-nano](./yolox/humanart/yolox_nano_8xb8-300e_humanart.py) |        38.9          | [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_nano_8xb8-300e_humanart-40f6f0d0.pth) |
+| [YOLOX-tiny](./yolox/humanart/yolox_tiny_8xb8-300e_humanart.py) |             47.7              |         [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_tiny_8xb8-300e_humanart-6f3252f9.pth) |
+| [YOLOX-s](./yolox/humanart/yolox_s_8xb8-300e_humanart.py) |             54.6              |     [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_s_8xb8-300e_humanart-3ef259a7.pth) |
+| [YOLOX-m](./yolox/humanart/yolox_m_8xb8-300e_humanart.py) |            59.1              |      [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_m_8xb8-300e_humanart-c2c7a14a.pth) |
+| [YOLOX-l](./yolox/humanart/yolox_l_8xb8-300e_humanart.py) |           60.2              |       [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_l_8xb8-300e_humanart-ce1d7a62.pth) |
+| [YOLOX-x](./yolox/humanart/yolox_x_8xb8-300e_humanart.py) |             61.3              |     [Det Model](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/yolox_x_8xb8-300e_humanart-a39d44ed.pth) |
 
-```bibtex
-@article{ren2015faster,
-  title={Faster r-cnn: Towards real-time object detection with region proposal networks},
-  author={Ren, Shaoqing and He, Kaiming and Girshick, Ross and Sun, Jian},
-  journal={Advances in neural information processing systems},
-  volume={28},
-  year={2015}
 
-```
 
-</details>
 
-<!-- [DATASET] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/abs/2303.02760">Human-Art (CVPR'2023)</a></summary>
-
-```bibtex
-@inproceedings{ju2023human,
-  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023},
-}
-```
-
-</details>
-
-Results on Human-Art validation set
-
-|    Backbone     |  Style  | Lr schd | Mem (GB) | Inf time (fps) | human box AP |                                                          Config                                                           |                                                                                                                                                                          Download                                                                                                                                                                           |
-| :-------------: | :-----: | :-----: | :------: | :------------: | :----: | :-----------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|    R-50-FPN     | pytorch |   1x    |   4.0    |      21.4      |  44.2  |    [config](mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_humanart.py)     |                          [model](https://drive.google.com/file/d/16gBKkNlLNdJfKeagV-KBirJBk3Ocvd7Y/view?usp=share_link)   
-
-Results on COCO val2017
-
-|    Backbone     |  Style  | Lr schd | Mem (GB) | Inf time (fps) | human box AP |                                                          Config                                                           |                                                                                                                                                                          Download                                                                                                                                                                           |
-| :-------------: | :-----: | :-----: | :------: | :------------: | :----: | :-----------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|    R-50-FPN     | pytorch |   1x    |   4.0    |      21.4      |  51.6  |    [config](mmdetection/configs/faster_rcnn/faster_rcnn_r50_fpn_1x_humanart.py)     |                          [model](https://drive.google.com/file/d/16gBKkNlLNdJfKeagV-KBirJBk3Ocvd7Y/view?usp=share_link)  
-
-
-## Human Pose Estimation
-
-You need to use the following clone command to include sub module mmpose
-
-```shell
-git clone --recurse-submodules git@github.com:IDEA-Research/HumanArt.git
-```
-
-For ease of use, we employ [MMPose](https://github.com/open-mmlab/mmpose) as the code base of human pose estimation. MMPose is an open-source toolbox for pose estimation based on PyTorch that support diverse tasks, various models and datasets with higher efficiency and higher accuracy.
-
-To train and evaluate human pose estimator, you can directly edit config files in `mmpose/configs`. We have provided one example for both bottom-up algorithm and top-down algorithm (in `mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart` and `mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/humanart`). Moreover, we provide checkpoints training on one-stage method ED-Pose. Future releases will include more models. You can also train your own model following the edition shown in our example.
-
-The supported models include:
-
-<!-- [ALGORITHM] -->
-
-<details>
-<summary align="right"><a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Sun_Deep_High-Resolution_Representation_Learning_for_Human_Pose_Estimation_CVPR_2019_paper.html">HRNet (CVPR'2019)</a></summary>
-
-```bibtex
-@inproceedings{sun2019deep,
-  title={Deep high-resolution representation learning for human pose estimation},
-  author={Sun, Ke and Xiao, Bin and Liu, Dong and Wang, Jingdong},
-  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
-  pages={5693--5703},
-  year={2019}
-}
-```
-
-</details>
-
-<!-- [DATASET] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/abs/2303.02760">Human-Art (CVPR'2023)</a></summary>
-
-```bibtex
-@inproceedings{ju2023human,
-  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023},
-}
-```
-
-</details>
-
-Results on Human-Art validation set with ground-truth bounding box
-
-| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      |                      
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [pose_hrnet_w48](mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/humanart/hrnet_w48_humanart_256x192.py) |  256x192   | 0.764 |      0.906      |      0.824      | 0.794 |      0.918      | [ckpt](https://drive.google.com/file/d/1gs1RCxRcItUHwA5N8P5_9mKcgwLiBjOO/view?usp=share_link) | 
-
-
-Results on COCO val2017 set with ground-truth bounding box
-
-| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      |   
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [pose_hrnet_w48](mmpose/configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/humanart/hrnet_w48_humanart_256x192.py) |  256x192   | 0.772 |      0.936      |      0.847      | 0.800 |      0.942      | [ckpt](https://drive.google.com/file/d/1gs1RCxRcItUHwA5N8P5_9mKcgwLiBjOO/view?usp=share_link) | 
-
-
-<!-- [ALGORITHM] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/abs/1611.05424">Associative Embedding (NIPS'2017)</a></summary>
-
-```bibtex
-@inproceedings{newell2017associative,
-  title={Associative embedding: End-to-end learning for joint detection and grouping},
-  author={Newell, Alejandro and Huang, Zhiao and Deng, Jia},
-  booktitle={Advances in neural information processing systems},
-  pages={2277--2287},
-  year={2017}
-}
-```
-
-</details>
-
-<!-- [ALGORITHM] -->
-
-<details>
-<summary align="right"><a href="http://openaccess.thecvf.com/content_CVPR_2020/html/Cheng_HigherHRNet_Scale-Aware_Representation_Learning_for_Bottom-Up_Human_Pose_Estimation_CVPR_2020_paper.html">HigherHRNet (CVPR'2020)</a></summary>
-
-```bibtex
-@inproceedings{cheng2020higherhrnet,
-  title={HigherHRNet: Scale-Aware Representation Learning for Bottom-Up Human Pose Estimation},
-  author={Cheng, Bowen and Xiao, Bin and Wang, Jingdong and Shi, Honghui and Huang, Thomas S and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={5386--5395},
-  year={2020}
-}
-```
-
-
-</details>
-
-<!-- [ALGORITHM] -->
-
-<details>
-<summary align="right"><a href="http://openaccess.thecvf.com/content_CVPR_2020/html/Huang_The_Devil_Is_in_the_Details_Delving_Into_Unbiased_Data_CVPR_2020_paper.html">UDP (CVPR'2020)</a></summary>
-
-```bibtex
-@InProceedings{Huang_2020_CVPR,
-  author = {Huang, Junjie and Zhu, Zheng and Guo, Feng and Huang, Guan},
-  title = {The Devil Is in the Details: Delving Into Unbiased Data Processing for Human Pose Estimation},
-  booktitle = {The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  month = {June},
-  year = {2020}
-}
-```
-
-</details>
-
-<!-- [DATASET] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/abs/2303.02760">Human-Art (CVPR'2023)</a></summary>
-
-```bibtex
-@inproceedings{ju2023human,
-  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023},
-}
-```
-
-</details>
-
-Results on Human-Art validation set without multi-scale test
-
-| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [HigherHRNet-w48_udp](mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart/higherhrnet_w48_humanart_512x512_udp.py) |  512x512   | 0.664 |      0.851      |      0.709      | 0.740 |      0.880      | [ckpt](https://drive.google.com/file/d/1fqPy44k-bYb6XqJXMZ5b9gVTzcIjOlPQ/view?usp=share_link) | 
-
-
-Results on COCO val2017 without multi-scale test
-
-| Arch                                          | Input Size |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [HigherHRNet-w48_udp](mmpose/configs/body/2d_kpt_sview_rgb_img/associative_embedding/humanart/higherhrnet_w48_humanart_512x512_udp.py) |  512x512   | 0.668 |      0.860      |      0.726      | 0.718 |      0.886      | [ckpt](https://drive.google.com/file/d/1fqPy44k-bYb6XqJXMZ5b9gVTzcIjOlPQ/view?usp=share_link) |
-
-
-
-
-
-<!-- [ALGORITHM] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/pdf/2302.01593.pdf">ED-Pose (ICLR 2023)</a></summary>
-
-```bibtex
-@inproceedings{
-yang2023explicit,
-  title={Explicit Box Detection Unifies End-to-End Multi-Person Pose Estimation},
-  author={Jie Yang and Ailing Zeng and Shilong Liu and Feng Li and Ruimao Zhang and Lei Zhang},
-  booktitle={International Conference on Learning Representations},
-  year={2023},
-  url={https://openreview.net/forum?id=s4WVupnJjmX}
-}
-```
-
-
-</details>
-
-<!-- [DATASET] -->
-
-<details>
-<summary align="right"><a href="https://arxiv.org/abs/2303.02760">Human-Art (CVPR'2023)</a></summary>
-
-```bibtex
-@inproceedings{ju2023human,
-  title={Human-Art: A Versatile Human-Centric Dataset Bridging Natural and Artificial Scenes},
-  author={Ju, Xuan and Zeng, Ailing and Wang, Jianan and Xu, Qiang and Zhang, Lei},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023},
-}
-```
-
-</details>
-
-**Noted that training with Human-Art on [ED-Pose](https://openreview.net/forum?id=s4WVupnJjmX) can lead to a performance boost on MSCOCO!**
-
-Results on Human-Art validation set
-
-| Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.723 |      0.861      |      0.774      | 0.808 |      0.921      | [ckpt](https://drive.google.com/file/d/15qasCeafI011ZWCGAe3I4ZdRsGMXBc9X/view?usp=share_link) | 
-
-
-Results on COCO val2017
-
-| Arch                                          | Backbone |  AP   | AP<sup>50</sup> | AP<sup>75</sup> |  AR   | AR<sup>50</sup> |                     ckpt                      | 
-| :-------------------------------------------- | :--------: | :---: | :-------------: | :-------------: | :---: | :-------------: | :-------------------------------------------: | 
-| [ED-Pose](https://github.com/IDEA-Research/ED-Pose) |  ResNet-50   | 0.724 |      0.898      |      0.794      | 0.799 |      0.946      | [ckpt](https://drive.google.com/file/d/15qasCeafI011ZWCGAe3I4ZdRsGMXBc9X/view?usp=share_link) | 
 
 ## Citing Human-Art
 
